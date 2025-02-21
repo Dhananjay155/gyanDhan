@@ -11,9 +11,9 @@ app.use(express.json())
 
 app.use('/tasks',taskRoutes);
 
-app.listen(5000, async ()=>{
+app.listen(3000, async ()=>{
     try {
-        console.log(`[server]: running on the 5000`);
+        console.log(`[server]: running on the 3000`);
     connectDB();
     } catch (error) {
         console.log("error" ,error)
