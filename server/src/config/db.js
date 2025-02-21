@@ -2,7 +2,7 @@
 
     async function connectDB (){
         try{
-            await mongoose.connect('mongodb+srv://yoga-guru:yoga-guru@yoga-guru.7ygw9.mongodb.net/?retryWrites=true&w=majority&appName=yoga-guru');
+            await mongoose.connect(process.env.MONGODB_URL);
             console.log(`[server]: MongoDB is Connected `);
             
         }catch(err){
