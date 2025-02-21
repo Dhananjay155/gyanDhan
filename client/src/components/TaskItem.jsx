@@ -6,18 +6,18 @@ const TaskItem = ({ task, refreshTasks }) => {
   const [updatedTask, setUpdatedTask] = useState({ ...task });
 
   const handleUpdate = async () => {
-    await axios.put(`http://localhost:5000/tasks/${task._id}`, updatedTask);
+    await axios.put(`https://gyandhan-3.onrender.com/${task._id}`, updatedTask);
     setIsEditing(false);
     refreshTasks();
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/tasks/${task._id}`);
+    await axios.delete(`https://gyandhan-3.onrender.com/${task._id}`);
     refreshTasks();
   };
 
   const toggleComplete = async () => {
-    await axios.put(`http://localhost:5000/tasks/${task._id}`, {
+    await axios.put(`https://gyandhan-3.onrender.com/${task._id}`, {
       ...task,
       completed: !task.completed,
     });

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/tasks";
+const API_URL = "https://gyandhan-3.onrender.com/tasks";
 
 export const getTasks = async () => await axios.get(API_URL);
 export const addTask = async (task) => await axios.post(API_URL, task);
