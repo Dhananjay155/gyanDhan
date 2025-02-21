@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { getTasks } from "../api";
+import axios from "axios";
 import TaskItem from "./TaskItem";
+
+const API_URL = "https://gyandhan-4.onrender.com/tasks/";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const { data } = await getTasks();
+    const { data } = await axios.get(API_URL);
     setTasks(data.todos);
   };
 

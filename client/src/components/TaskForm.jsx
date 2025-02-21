@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { addTask } from "../api";
+import axios from "axios";
+
+const API_URL = "https://gyandhan-4.onrender.com/tasks/";
 
 const TaskForm = ({ refreshTasks }) => {
   const [task, setTask] = useState({ title: "", desc: "", priority: "Medium", dueDate: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addTask(task);
+    await axios.post(API_URL, task);
     refreshTasks();
     setTask({ title: "", desc: "", priority: "Medium", dueDate: "" });
   };

@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json())
 
 app.use('/tasks',taskRoutes);
-
-app.listen(3000, async ()=>{
+const PORT = 3000 || process.env.PORT
+app.listen(PORT, async ()=>{
     try {
         console.log(`[server]: running on the 3000`);
     connectDB();

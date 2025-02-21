@@ -1,26 +1,25 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API_URL = "https://gyandhan-4.onrender.com/tasks/";
+
 const TaskItem = ({ task, refreshTasks }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTask, setUpdatedTask] = useState({ ...task });
 
   const handleUpdate = async () => {
-    await axios.put(`https://gyandhan-3.onrender.com/${task._id}`, updatedTask);
+    await axios.put(`${API_URL}${task._id}`, updatedTask);
     setIsEditing(false);
     refreshTasks();
   };
 
   const handleDelete = async () => {
-    await axios.delete(`https://gyandhan-3.onrender.com/${task._id}`);
+    await axios.delete(`${API_URL}${task._id}`);
     refreshTasks();
   };
 
   const toggleComplete = async () => {
-    await axios.put(`https://gyandhan-3.onrender.com/${task._id}`, {
-      ...task,
-      completed: !task.completed,
-    });
+    await axios.put(`${API_URL}${task._id}`, { ...task, completed: !task.completed });
     refreshTasks();
   };
 
@@ -28,19 +27,9 @@ const TaskItem = ({ task, refreshTasks }) => {
     <div className={`task-item ${task.completed ? "completed" : ""}`}>
       {isEditing ? (
         <>
-          <input
-            type="text"
-            value={updatedTask.title}
-            onChange={(e) => setUpdatedTask({ ...updatedTask, title: e.target.value })}
-          />
-          <textarea
-            value={updatedTask.desc}
-            onChange={(e) => setUpdatedTask({ ...updatedTask, desc: e.target.value })}
-          />
-          <select
-            value={updatedTask.priority}
-            onChange={(e) => setUpdatedTask({ ...updatedTask, priority: e.target.value })}
-          >
+          <input type="text" value={updatedTask.title} onChange={(e) => setUpdatedTask({ ...updatedTask, title: e.target.value })} />
+          <textarea value={updatedTask.desc} onChange={(e) => setUpdatedTask({ ...updatedTask, desc: e.target.value })} />
+          <select value={updatedTask.priority} onChange={(e) => setUpdatedTask({ ...updatedTask, priority: e.target.value })}>
             <option>Low</option>
             <option>Medium</option>
             <option>High</option>
